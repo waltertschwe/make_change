@@ -43,11 +43,9 @@ class MakeChange:
         """
         results = {}
 
-        if total_change >= 1:
-            results["DOLLARS"] = self.get_num_denomination_returned(total_change)
-        else:
-            results["DOLLARS"] = 0
-
+        results["DOLLARS"] = (
+            self.get_num_denomination_returned(total_change) if total_change >= 1 else 0
+        )
         change = total_change - results["DOLLARS"]
         for denomination in self.denominations.items():
             change_due = change / denomination[1]
