@@ -7,10 +7,9 @@ if __name__ == "__main__":
     Start MakeChange Application.
     """
 
-   
     total_cost = input("Enter Total Cost: ")
     paid = input("Enter Amount Provided: ")
-    
+
     make_change = MakeChange(total_cost, paid)
     try:
         change, total_change = make_change.get_change()

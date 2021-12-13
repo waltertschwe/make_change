@@ -5,7 +5,6 @@ from services.make_change import MakeChange
 from services.errors import NoChangeRequired, ValueTooSmallError
 
 
-
 def test_bad_input_data():
     """
     Test that we raise an error when we have bad Decimal data input.
@@ -13,6 +12,7 @@ def test_bad_input_data():
     with pytest.raises(decimal.InvalidOperation):
         make_change = MakeChange("bad_data", "needs_to_be_float")
         change, total_change = make_change.get_change()
+
 
 def test_no_change_required():
     """
