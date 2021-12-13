@@ -25,7 +25,6 @@ class MakeChange:
         """
         Main entry point into the application to generate change.
         """
-        results = {}
         cost_decimal, paid_decimal = self.clean_string_input_to_decimal()
         total_change = paid_decimal - cost_decimal
         if total_change.is_zero():
@@ -34,20 +33,22 @@ class MakeChange:
         if total_change < 0:
             raise ValueTooSmallError
 
+        results = self.get_change_returned(total_change)
+
+        return results, total_change
+
+    def get_change_returned(self, total_change) -> dict:
+        """
+        Generic function to process USD change denominations.
+        """
+        results = {}
+
         if total_change >= 1:
             results["DOLLARS"] = self.get_num_denomination_returned(total_change)
         else:
             results["DOLLARS"] = 0
 
-        change_due = total_change - results["DOLLARS"]
-        self.get_change_returned(change_due, results)
-
-        return results, total_change
-
-    def get_change_returned(self, change, results) -> dict:
-        """
-        Generic function to process USD change denominations.
-        """
+        change = total_change - results["DOLLARS"]
         for denomination in self.denominations.items():
             change_due = change / denomination[1]
             if change_due >= 1:
