@@ -5,10 +5,10 @@ if __name__ == "__main__":
     """
     Start MakeChange Application.
     """
-    amount_owed = "15.00"
-    customer_paid = "19.99"
+    total_cost = "15.00"
+    paid = "15.50"
 
-    make_change = MakeChange(amount_owed, customer_paid)
+    make_change = MakeChange(total_cost, paid)
     try:
         change, total_change = make_change.get_change()
         print(f"Total change owned: {total_change}")
@@ -18,4 +18,3 @@ if __name__ == "__main__":
         print("Customer still owes more money...")
     except NoChangeRequired:
         print("No change needed exact change was provied by the customer.")
-    
