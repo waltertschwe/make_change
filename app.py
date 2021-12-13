@@ -5,7 +5,10 @@ if __name__ == "__main__":
     """
     Start MakeChange Application.
     """
-    make_change = MakeChange("15.00", "19.99")
+    amount_owed = "15.00"
+    customer_paid = "19.99"
+
+    make_change = MakeChange(amount_owed, customer_paid)
     try:
         change, total_change = make_change.get_change()
         print(f"Total change owned: {total_change}")
